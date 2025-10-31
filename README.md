@@ -13,7 +13,7 @@ _Updated daily after games complete_
 
 ## 🎯 View Live Dashboard
 
-👉 **[View Live Tracking Dashboard](https://YOUR_USERNAME.github.io/nba-picks-tracker/nba_tracking_dashboard.html)**
+👉 **[View Live Tracking Dashboard](https://bangletsgetit.github.io/nba-picks-tracker/nba_tracking_dashboard.html)**
 
 ## 🔍 How It Works
 
