@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Bet Tracking Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .card { 
+            background: #1a1a1a; 
+            border-radius: 1rem; 
+            border: 1px solid #2a2a2a;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #fbbf24;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbbf24;
+        }
+        .stat-label {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem; color: #fbbf24; }
+        h2 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; color: #fbbf24; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: #0a0a0a; }
+        th { padding: 0.75rem 1rem; text-align: left; color: #fbbf24; font-weight: 700; }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid #2a2a2a; }
+        tr:hover { background: #0a0a0a; }
+        .text-center { text-align: center; }
+        .text-green-400 { color: #10b981; }
+        .text-red-400 { color: #ef4444; }
+        .text-yellow-400 { color: #fbbf24; }
+        .text-gray-400 { color: #9ca3af; }
+        .font-bold { font-weight: 700; }
+        .text-sm { font-size: 0.875rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-pending { background: #78350f; color: #fbbf24; }
+        .badge-win { background: #064e3b; color: #10b981; }
+        .badge-loss { background: #450a0a; color: #ef4444; }
+        .badge-push { background: #374151; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="text-center">🏀 NBA BET TRACKING</h1>
+            <p class="text-center text-gray-400" style="font-size: 1.25rem; margin-bottom: 2rem;">Performance Analytics Dashboard</p>
+            
+            <div class="grid">
+                <div class="stat-card">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Total Bets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100.0%</div>
+                    <div class="stat-label">Win Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value text-green-400">
+                        +1.00u
+                    </div>
+                    <div class="stat-label">Total Profit</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value text-green-400">
+                        +90.9%
+                    </div>
+                    <div class="stat-label">ROI</div>
+                </div>
+            </div>
+            
+            <div style="background: #0a0a0a; border-radius: 0.5rem; padding: 1rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                <div>
+                    <span class="text-gray-400">Wins:</span>
+                    <span class="text-green-400 font-bold" style="margin-left: 0.5rem;">1</span>
+                </div>
+                <div>
+                    <span class="text-gray-400">Losses:</span>
+                    <span class="text-red-400 font-bold" style="margin-left: 0.5rem;">0</span>
+                </div>
+                <div>
+                    <span class="text-gray-400">Pushes:</span>
+                    <span class="text-gray-400 font-bold" style="margin-left: 0.5rem;">0</span>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <h2>🎯 Upcoming Bets</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Game Date</th>
+                            <th>Game</th>
+                            <th>Type</th>
+                            <th>Pick</th>
+                            <th>Line</th>
+                            <th>Edge</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">10/31 11:00 PM</td>
+                            <td class="font-bold">Atlanta Hawks @ Indiana Pacers</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Atlanta Hawks -2.5</td>
+                            <td>2.5</td>
+                            <td>-5.7</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">10/31 11:00 PM</td>
+                            <td class="font-bold">Boston Celtics @ Philadelphia 76ers</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Boston Celtics +1.5</td>
+                            <td>-1.5</td>
+                            <td>-4.8</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">10/31 11:00 PM</td>
+                            <td class="font-bold">Boston Celtics @ Philadelphia 76ers</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 234.5</td>
+                            <td>234.5</td>
+                            <td>-10.7</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">10/31 11:30 PM</td>
+                            <td class="font-bold">Toronto Raptors @ Cleveland Cavaliers</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Cleveland Cavaliers -7.5</td>
+                            <td>-7.5</td>
+                            <td>+16.5</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">10/31 11:30 PM</td>
+                            <td class="font-bold">Toronto Raptors @ Cleveland Cavaliers</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 236.5</td>
+                            <td>236.5</td>
+                            <td>-5.1</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 12:00 AM</td>
+                            <td class="font-bold">New York Knicks @ Chicago Bulls</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Chicago Bulls +4.5</td>
+                            <td>4.5</td>
+                            <td>+14.8</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 12:00 AM</td>
+                            <td class="font-bold">New York Knicks @ Chicago Bulls</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 234.5</td>
+                            <td>234.5</td>
+                            <td>-8.5</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 01:30 AM</td>
+                            <td class="font-bold">Los Angeles Lakers @ Memphis Grizzlies</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Los Angeles Lakers +2.5</td>
+                            <td>-2.5</td>
+                            <td>-3.6</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 01:30 AM</td>
+                            <td class="font-bold">Los Angeles Lakers @ Memphis Grizzlies</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 236.5</td>
+                            <td>236.5</td>
+                            <td>-13.3</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 02:00 AM</td>
+                            <td class="font-bold">Utah Jazz @ Phoenix Suns</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Phoenix Suns -3.5</td>
+                            <td>-3.5</td>
+                            <td>+23.8</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 02:00 AM</td>
+                            <td class="font-bold">Utah Jazz @ Phoenix Suns</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 237.5</td>
+                            <td>237.5</td>
+                            <td>-9.4</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 02:30 AM</td>
+                            <td class="font-bold">New Orleans Pelicans @ Los Angeles Clippers</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Los Angeles Clippers -11.5</td>
+                            <td>-11.5</td>
+                            <td>+11.5</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">11/01 02:30 AM</td>
+                            <td class="font-bold">New Orleans Pelicans @ Los Angeles Clippers</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 224.5</td>
+                            <td>224.5</td>
+                            <td>-224.5</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 05:00 PM</td>
+                            <td class="font-bold">Cleveland Cavaliers @ New York Knicks</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: New York Knicks -2.5</td>
+                            <td>-2.5</td>
+                            <td>+7.7</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 05:00 PM</td>
+                            <td class="font-bold">Cleveland Cavaliers @ New York Knicks</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 230.5</td>
+                            <td>230.5</td>
+                            <td>-9.3</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 07:30 PM</td>
+                            <td class="font-bold">San Antonio Spurs @ Oklahoma City Thunder</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Oklahoma City Thunder -9.5</td>
+                            <td>-9.5</td>
+                            <td>+7.1</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 07:30 PM</td>
+                            <td class="font-bold">San Antonio Spurs @ Oklahoma City Thunder</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 229.5</td>
+                            <td>229.5</td>
+                            <td>-10.4</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 10:00 PM</td>
+                            <td class="font-bold">Dallas Mavericks @ Golden State Warriors</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Golden State Warriors -4.5</td>
+                            <td>-4.5</td>
+                            <td>+4.2</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/25 10:00 PM</td>
+                            <td class="font-bold">Dallas Mavericks @ Golden State Warriors</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 226.5</td>
+                            <td>226.5</td>
+                            <td>-14.9</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">12/26 03:30 AM</td>
+                            <td class="font-bold">Minnesota Timberwolves @ Denver Nuggets</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: Denver Nuggets -5.5</td>
+                            <td>-5.5</td>
+                            <td>+14.9</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">01/19 07:30 PM</td>
+                            <td class="font-bold">Oklahoma City Thunder @ Cleveland Cavaliers</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 229.5</td>
+                            <td>229.5</td>
+                            <td>-6.5</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">01/19 10:00 PM</td>
+                            <td class="font-bold">Dallas Mavericks @ New York Knicks</td>
+                            <td>Spread</td>
+                            <td class="text-yellow-400">✅ BET: New York Knicks -6.5</td>
+                            <td>-6.5</td>
+                            <td>+8.2</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">01/19 10:00 PM</td>
+                            <td class="font-bold">Dallas Mavericks @ New York Knicks</td>
+                            <td>Total</td>
+                            <td class="text-yellow-400">✅ BET: UNDER 227.5</td>
+                            <td>227.5</td>
+                            <td>-17.1</td>
+                            <td><span class="badge badge-pending">Pending</span></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        
+        <div class="card">
+            <h2>📊 Completed Bets</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Game Date</th>
+                            <th>Game</th>
+                            <th>Type</th>
+                            <th>Pick</th>
+                            <th>Line</th>
+                            <th>Score</th>
+                            <th>Result</th>
+                            <th>Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td class="text-sm font-bold">01/20 01:00 AM</td>
+                            <td class="font-bold">Boston Celtics @ Detroit Pistons</td>
+                            <td>Spread</td>
+                            <td>✅ BET: Detroit Pistons -4.5</td>
+                            <td>-4.5</td>
+                            <td class="text-sm">113-119</td>
+                            <td>
+                                
+                                <span class="badge badge-win">✅ Win</span>
+                                
+                            </td>
+                            <td class="font-bold text-green-400">
+                                +1.00u
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="text-center text-gray-400 text-sm" style="margin-top: 2rem;">
+            <p>Last updated: 2025-10-31 01:24 AM</p>
+        </div>
+    </div>
+</body>
+</html>
